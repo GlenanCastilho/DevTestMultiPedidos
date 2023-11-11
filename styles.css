@@ -1,0 +1,497 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+:root {
+  --white: #fff;
+  --gray: #ccc;
+  --green: #2DD454;
+}
+
+body {
+  background-color: var(--gray);
+  font-family: sans-serif;
+  padding: 0.7rem;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+input {
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+select {
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+
+#mainHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#mainHeader p {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+#mainHeader form fieldset {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+  text-align: center;
+  width: 20px;
+  line-height: 20px;
+  border-radius: 50%;
+  margin-left: 5px;
+  background-color: var(--green);
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.labelCheckbox {
+  margin-left: 0.5rem;
+  font-weight: bold;
+}
+
+.switchContainer{
+  display: flex;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 45px;
+  height: 25px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--gray);
+  transition: 0.4s;
+}
+
+.slider:before {
+  content: "";
+  position: absolute;
+  height: 17px;
+  width: 17px;
+  left: 4px;
+  bottom: 4px;
+  background-color: var(--white);
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: var(--green);
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.border {
+  border: solid var(--gray) 1px;
+  border-radius: 5px;
+}
+
+.container {
+  background-color: var(--white);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.secondaryHeading {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+#couponArticle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 20px;
+  gap: 20px;
+  width: 100vw;
+}
+
+.radio-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.radio-buttons input[type="radio"] {
+  display: none;
+}
+
+.radio-buttons label {
+  position: relative;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  border: 2px solid var(--green);
+  border-radius: 5px;
+  color: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45%;
+}
+
+.radio-buttons label:before {
+  content: "";
+  margin-right: 20px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 3px solid var(--green);
+}
+
+.radio-buttons input[type="radio"]:checked + label {
+  background: var(--green);
+  color: var(--white);
+}
+
+.radio-buttons input[type="radio"]:checked + label:before {
+  height: 10px;
+  width: 10px;
+  border: 5px solid var(--white);
+  background-color: var(--green);
+}
+
+.couponText {
+  background-color: #007BFF;
+  color: var(--white);
+  padding: 1rem;
+  max-width: 600px;
+  align-self: center;
+}
+
+#couponRegistrationForm h3 {
+  font-weight: bold;
+  font-size: 1.3rem;
+  align-self: center;
+  margin-top: 1rem;
+}
+
+#couponRegistrationForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto;
+  gap: 1rem;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 2px solid var(--gray);
+  border-radius: 4px;
+  font-size: 16px;
+  max-width: 290px;
+  width: 100%;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.input-group-addon {
+  display: block;
+  border: 1px solid #666;
+  padding: 5px;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#registerButton {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: var(--green);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  max-width: 180px;
+  align-self: center;
+  text-align: center;
+  width: 100%;
+}
+
+#registerButton:hover {
+  filter: brightness(120%);
+}
+
+#data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9em;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+#data-table thead tr {
+  background-color: #009879;
+  color: var(--white);
+  text-align: left;
+}
+
+#data-table th,
+#data-table td {
+  padding: 12px 15px;
+}
+
+#data-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+#data-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+#data-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.filter-button {
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.filter-button.active {
+  background-color: #009879;
+  color: #fff;
+}
+
+.edit-icon,
+.delete-icon {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.delete-icon {
+  color: #de2e2e;
+}
+
+
+.error-message {
+  color: red;
+  margin-top: 5px;
+}
+
+#tableSection {
+  margin-top: 2rem;
+  padding: 1rem;
+  border: solid var(--gray) 1px;
+  border-radius: 5px;
+  background-color: var(--white);
+}
+
+#tableSection table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9em;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+#tableSection th,
+#tableSection td {
+  padding: 12px 15px;
+  border: 1px solid #dddddd;
+}
+
+#tableSection th {
+  background-color: #009879;
+  color: var(--white);
+  text-align: left;
+}
+
+#tableSection td {
+  text-align: right;
+}
+
+#graphAndTableSection {
+  display: flex;
+  justify-content: space-between;
+}
+
+#graphContainer,
+#tableSection {
+  width: 45%;
+}
+
+@media (min-width: 425px) {
+  .radio-buttons {
+      flex-direction: row;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 1rem;
+  }
+
+  .dateAndValueFields {
+      display: flex;
+      flex-direction: row;
+      gap: 3rem;
+      margin-bottom: 1rem;
+  }
+
+  input[type="date"] {
+      margin-left: 0;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="date"],
+  select {
+      margin-bottom: 0;
+  }
+}
+
+@media (min-width: 525px) {
+  #codeAndSelectContainer {
+      flex-direction: row;
+  }
+}
+
+@media (min-width: 900px) {
+  #couponRegistrationForm {
+      flex-direction: row;
+      gap: 8rem;
+  }
+
+  #couponRegistrationForm #infoHeading {
+      margin-top: -1rem;
+  }
+
+  #codeSelectContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+  }
+
+  #codeAndSelectContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+  }
+
+  #rulesContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+  }
+
+  .dateAndValueFields {
+      margin-bottom: 0;
+      margin-top: 1rem;
+  }
+}
+
+@media (min-width: 1300px) {
+  #couponRegistrationForm {
+      gap: 1rem;
+  }
+
+  .dateAndValueFields {
+      gap: 1rem;
+  }
+
+  #couponSection {
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+  }
+
+  #couponArticle {
+      order: 1;
+  }
+}

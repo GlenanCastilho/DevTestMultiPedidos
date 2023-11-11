@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header id="mainHeader" class="container border">
+    <h1>Cupons de Desconto</h1>
+    <p style="text-align: justify; margin: 1em;">
+      Os cupons de desconto são uma ferramenta poderosa para atrair novos clientes e recompensar os fiéis em seu restaurante. Ao criar um cupom, você pode oferecer um desconto fixo ou percentual em pedidos acima de um determinado valor. Os cupons podem ser únicos, para uso individual, ou gerais, para serem usados por qualquer cliente. Você também pode definir uma data de validade para os cupons, incentivando os clientes a voltarem ao seu restaurante antes que o cupom expire. Lembre-se, a chave para uma campanha de cupons bem-sucedida é equilibrar a atração para os clientes com a lucratividade do seu negócio. Use esta página para criar e gerenciar seus cupons de desconto e impulsionar suas vendas!
+      </p>
+      
+    <form>
+      <fieldset class="switch-fieldset">
+        <label class="switch">
+          <input type="checkbox" id="enableCoupons">
+          <span class="slider round"></span>
+        </label>
+        <label for="enableCoupons" class="labelCheckbox">Ativar cupons de desconto</label>
+      </fieldset>
+    </form>
+  </header>
+
+  <main style="display: none">
+    <section id="couponSection" class="container border">
+      <article id="couponArticle" class="border">
+        <h2 class="secondaryHeading">Criar cupom de desconto</h2>
+
+        <div class="radio-buttons">
+          <input type="radio" id="generalCoupon" value="General Coupon" name="couponType">
+          <label for="generalCoupon">Cupom Geral</label>
+
+          <input type="radio" id="uniqueCoupon" value="Unique Coupon" name="couponType">
+          <label for="uniqueCoupon">Uso Único</label>
+        </div>
+
+        <div id="uniqueCouponText" class="couponText border">
+          <p><strong>Single use:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+
+        <div id="generalCouponText" class="couponText border">
+          <p><strong>General Coupon:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+
+        <form id="couponRegistrationForm">
+          <div id="codeSelectContainer">
+            <div class="codeAndSelectContainer">
+              <div class="formFields codeField">
+                <label for="codeField">
+                  Código do cupom
+                  <span class="tooltip">?
+                    <span class="tooltiptext">Texto de exemplo colocar aqui.</span>
+                  </span>
+                </label>
+                <input type="text" id="codeField" placeholder="test" required>
+              </div>
+
+              <div class="formFields">
+                <label for="selectDiscount">Selecione o tipo de desconto<span class="tooltip">?
+                  <span class="tooltiptext">Texto de exemplo colocar aqui.</span>
+                </span></label>
+                <select id="selectDiscount" required>
+                  <option value="Fixed Discount">Desconto Fixo</option>
+                  <option value="Percentage Discount">Desconto Porcentagem</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="formFields" id="percentageInput">
+              <label for="percentageField">Qual a porcentagem do desconto<span class="tooltip">?
+                <span class="tooltiptext">Texto de exemplo colocar aqui.</span>
+              </span></label>
+              <div class="input-group">
+                <input type="number" id="percentageField" min="1" max="100" placeholder="test" required>
+                <span class="input-group-addon">%</span>
+              </div>
+            </div>
+
+            <div class="formFields" id="moneyInput">
+              <label for="discountMoney">Valor do desconto em reais<span class="tooltip">?
+                <span class="tooltiptext">Texto de exemplo colocar aqui.</span>
+              </span></label>
+              <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input type="number" id="discountMoney" step="0.01" min="0.10" placeholder="test" required>
+              </div>
+            </div>
+          </div>
+
+          <div id="rulesContainer">
+            <h3>Regras do Cupom</h3>
+
+            <div class="switchContainer">
+              <label class="switch">
+                <input type="checkbox" id="deadlineCheckbox" checked>
+                <span class="slider round"></span>
+              </label>
+              <label for="deadlineCheckbox" class="labelCheckbox">Data limite Para Uso</label>
+            </div>
+
+            <div class="dateAndValueFields">
+              <div class="formFields">
+                <label for="dateField">Data para expirar<span class="tooltip">?
+                  <span class="tooltiptext">Texto de exemplo colocar aqui.</span>
+                </span></label>
+                <input type="date" id="dateField" min="2023-04-01" required>
+              </div>
+
+              <div class="formFields">
+                <label for="minValue">Valor minimo<span class="tooltip">?
+                  <span class="tooltiptext">Texto de exemplo colocar aqui.</span>
+                </span></label>
+                <div class="input-group">
+                  <span class="input-group-addon">$</span>
+                  <input type="number" id="minValue" step="0.01" placeholder="test" min="0.10" required>
+                </div>
+              </div>
+            </div>
+
+            <div class="switchContainer">
+              <label class="switch">
+                <input type="checkbox" id="printCouponsCheckbox">
+                <span class="slider round"></span>
+              </label>
+              <label for="printCouponsCheckbox" class="labelCheckbox">Imprimir Cupom</label>
+            </div>
+
+            <input type="submit" id="registerButton" value="Cadastrar Cupom">
+          </div>
+        </form>
+
+      </article>
+    </section>
+
+<!-- Seção da tabela -->
+
+<section id="graphAndTableSection" class="container border">
+  <!-- Seção do gráfico -->
+  <div id="graphContainer">
+    <h2 class="secondaryHeading">Uso de cupons por tipo</h2>
+    <canvas id="couponChart"></canvas>
+  </div>
+
+  <!-- Seção da tabela -->
+  <div id="tableSection">
+    <h2 class="secondaryHeading">Faturamentos realizados com cupons</h2>
+    <table>
+      <tr>
+        <th>Unico</th>
+        <th>Total</th>
+      </tr>
+      <tr>
+        <td>R$31,70</td>
+        <td>R$251,72</td>
+      </tr>
+      <tr>
+        <td>R$31,70</td>
+        <td>R$251,72</td>
+      </tr>
+      <tr>
+        <td>R$31,70</td>
+        <td>R$251,72</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+
+  </main>
+
+  <footer style="display: none">
+    <article class="container border">
+      <h2 class="secondaryHeading">Cupons registrados</h2>
+
+      <div id="tableArticle">
+
+        <div class="filter-buttons">
+          <button class="filter-button active" id="all">Todos</button>
+          <button class="filter-button" id="general">Geral</button>
+          <button class="filter-button" id="unique">Único</button>
+        </div>
+
+        <table id="data-table">
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Desconto</th>
+              <th>Tipo</th>
+              <th>Valor minimo</th>
+              <th>data de expiração</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ABC123</td>
+              <td>10%</td>
+              <td>General Coupon</td>
+              <td>$50.00</td>
+              <td>2023-12-31
+                <span class="edit-icon">✏️</span>
+        <span class="delete-icon">🗑️</span>
+              </td>
+            </tr>
+            <tr>
+              <td>XYZ456</td>
+              <td>$20.00</td>
+              <td>Unique Coupon</td>
+              <td>$100.00</td>
+              <td>2023-11-30
+                <span class="edit-icon">✏️</span>
+        <span class="delete-icon">🗑️</span>
+              </td>
+            </tr>
+            <tr>
+              <td>DEF789</td>
+              <td>15%</td>
+              <td>General Coupon</td>
+              <td>$75.00</td>
+              <td>2023-10-31
+                <span class="edit-icon">✏️</span>
+        <span class="delete-icon">🗑️</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
